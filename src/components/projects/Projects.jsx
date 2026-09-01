@@ -1,86 +1,9 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SectionTitle from '../ui/SectionTitle'
+import { projects } from '../../data/projectsData'
 
-const projects = [
-  {
-    title: 'Kamal CRM – Real Estate Management System',
-    description: 'A full-featured CRM for real estate with lead lifecycle management, role-based auth, and call log tracking. REST APIs power both mobile and web clients.',
-    features: [
-      'Lead lifecycle management',
-      'Role-based auth',
-      'Call log tracking',
-      'REST APIs for mobile + web',
-    ],
-    tech: ['React', 'Node.js', 'MongoDB', 'Express', 'Redux'],
-    github: '#',
-    live: '#',
-  },
-  {
-    title: 'SearchMyStudy',
-    description: 'Student-facing portal for discovering courses and institutes. Part of the education management ecosystem with search, filters, and secure authentication.',
-    features: [
-      'Course & institute search',
-      'Filters and recommendations',
-      'Secure authentication',
-      'Responsive web app',
-    ],
-    tech: ['React', 'Node.js', 'PostgreSQL', 'Express', 'Tailwind'],
-    github: '#',
-    live: 'http://searchmystudy.com/',
-  },
-  {
-    title: 'Admission Portals',
-    description: 'Central admission portal for institutes. Streamlines application and enrollment with role-based access and a clean admin workflow.',
-    features: [
-      'Application management',
-      'Role-based access',
-      'Admission workflow',
-      'Admin dashboard',
-    ],
-    tech: ['React', 'Node.js', 'PostgreSQL', 'Express', 'Tailwind'],
-    github: '#',
-    live: 'https://admissionportals.in/',
-  },
-  {
-    title: 'CourseFinder Admin',
-    description: 'Admin panel for the CourseFinder / SearchMyStudy ecosystem. Manages courses, franchises, and content with secure authentication.',
-    features: [
-      'Admin dashboard',
-      'Course & content management',
-      'Franchise management',
-      'Secure authentication',
-    ],
-    tech: ['React', 'Node.js', 'PostgreSQL', 'Express', 'Tailwind'],
-    github: '#',
-    live: 'http://admin.coursefinder.co.in/',
-  },
-  {
-    title: 'Uni Admission Portal',
-    description: 'University-focused admission portal. Handles applications and enrollment for higher education with a dedicated workflow.',
-    features: [
-      'University admissions',
-      'Application tracking',
-      'Enrollment workflow',
-      'Secure authentication',
-    ],
-    tech: ['React', 'Node.js', 'PostgreSQL', 'Express', 'Tailwind'],
-    github: '#',
-    live: 'https://uni.admissionportals.in/',
-  },
-  {
-    title: 'CourseFinder',
-    description: 'Course discovery and institute search platform. Helps students find courses and connect with institutes across the education ecosystem.',
-    features: [
-      'Course discovery',
-      'Institute search',
-      'Responsive design',
-      'Secure authentication',
-    ],
-    tech: ['React', 'Vite', 'Node.js', 'PostgreSQL', 'Tailwind'],
-    github: '#',
-    live: 'https://coursefinder.co.in/',
-  },
-]
+const PREVIEW_FEATURES = 3
 
 export default function Projects() {
   return (
@@ -89,9 +12,9 @@ export default function Projects() {
         <SectionTitle subtitle="Projects" title="What I've built" />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, i) => (
+          {projects.map((project) => (
             <motion.article
-              key={project.title}
+              key={project.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
@@ -106,11 +29,23 @@ export default function Projects() {
                 {project.description}
               </p>
               <ul className="space-y-1.5 mb-4">
-                {project.features.map((f) => (
-                  <li key={f} className="text-slate-600 dark:text-slate-400 text-sm flex items-center gap-2">
+                {project.features.slice(0, PREVIEW_FEATURES).map((f) => (
+                  <li
+                    key={f}
+                    className={`text-sm flex items-center gap-2 ${
+                      project.highlightFeatures?.includes(f)
+                        ? 'text-primary-600 dark:text-primary-400 font-medium'
+                        : 'text-slate-600 dark:text-slate-400'
+                    }`}
+                  >
                     <span className="text-primary-500">✓</span> {f}
                   </li>
                 ))}
+                {project.features.length > PREVIEW_FEATURES && (
+                  <li className="text-slate-500 dark:text-slate-500 text-xs pl-5">
+                    +{project.features.length - PREVIEW_FEATURES} more
+                  </li>
+                )}
               </ul>
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tech.map((t) => (
@@ -123,6 +58,13 @@ export default function Projects() {
                 ))}
               </div>
               <div className="flex flex-wrap gap-3">
+                <Link
+                  to={`/projects/${project.slug}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium text-sm hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                >
+                  <InfoIcon className="w-4 h-4" />
+                  Know More
+                </Link>
                 {project.github && (
                   <a
                     href={project.github}
@@ -151,6 +93,14 @@ export default function Projects() {
         </div>
       </div>
     </section>
+  )
+}
+
+function InfoIcon({ className }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
   )
 }
 

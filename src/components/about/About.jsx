@@ -10,7 +10,7 @@ const highlights = [
 ]
 
 const stats = [
-  { value: '2+', label: 'Years Experience' },
+  { value: '3+', label: 'Years Experience' },
   { value: '10+', label: 'Projects' },
   { value: '15+', label: 'Technologies' },
   { value: '3+', label: 'Team Collaborations' },
