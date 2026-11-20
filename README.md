@@ -1,68 +1,26 @@
-# Shadab Shaikh – Full Stack Developer Portfolio
+# Shadab — Animated Portfolio (React + Tailwind CSS)
 
-A modern, responsive portfolio built with **React (Vite)**, **Tailwind CSS**, **React Router**, and **Framer Motion**.
-
-## Tech Stack
-
-- **React 18** + **Vite**
-- **Tailwind CSS** (dark mode, custom theme)
-- **React Router** (routing)
-- **Framer Motion** (animations)
-
-## Features
-
-- Sticky navbar with smooth scroll links
-- Dark / Light mode toggle (persisted in `localStorage`)
-- Hero, About, Skills, Experience (timeline), Projects, Contact, Footer
-- Glassmorphism-style cards and gradient backgrounds
-- Responsive layout and typography (Outfit, JetBrains Mono)
-- Section reveal animations and hover effects
-
-## Setup
-
+## Run it
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:5173
+npm run build    # production build in /dist
 ```
 
-Open [http://localhost:5173](http://localhost:5173).
+## Edit content
+Everything (name, links, experience, projects, skills) is in **`src/data.js`**.
+- Set your LinkedIn URL in `profile.linkedin`.
+- Your resume is served from `public/resume.pdf` — replace it when you update it.
 
-## Build
+## Structure
+- `src/components/Hero.jsx` — animated headline, typewriter, orbiting tech badges
+- `src/components/Sections.jsx` — About (count-up stats), Experience timeline, Projects (filter + tilt cards), Skills marquee, Contact
+- `src/components/Motion.jsx` — reusable animations: Reveal, Counter, Typewriter, Tilt, Magnetic
+- `src/components/Chrome.jsx` — navbar w/ active section, scroll progress bar, cursor glow
+- `src/index.css` — Tailwind v4 theme: colors, fonts, keyframes
 
-```bash
-npm run build
-npm run preview
-```
+No animation library needed — everything uses Tailwind + IntersectionObserver.
+Respects `prefers-reduced-motion`.
 
-## Project Structure
-
-```
-src/
-├── components/
-│   ├── about/
-│   ├── contact/
-│   ├── experience/
-│   ├── footer/
-│   ├── hero/
-│   ├── layout/
-│   ├── navbar/
-│   ├── projects/
-│   ├── skills/
-│   └── ui/           # Button, SectionTitle
-├── context/          # ThemeContext
-├── pages/            # Home
-├── App.jsx
-├── main.jsx
-└── index.css
-```
-
-## Customization
-
-- **Resume**: Add `public/resume.pdf` and the "Download Resume" button will link to it.
-- **Projects**: Edit `github` and `live` URLs in `src/components/projects/Projects.jsx`.
-- **Contact**: Replace the form `handleSubmit` with your backend or service (e.g. Formspree, API).
-- **Social**: Update GitHub and LinkedIn URLs in `src/components/contact/Contact.jsx`.
-
-## License
-
-Private use. © Shadab Shaikh.
+## Deploy
+Push to GitHub, then import on Vercel or Netlify (build: `npm run build`, output: `dist`).

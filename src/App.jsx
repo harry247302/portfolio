@@ -1,27 +1,22 @@
-import { Routes, Route } from 'react-router-dom'
-import Layout from './components/layout/Layout'
-import Home from './pages/Home'
-import About from './pages/About'
-import Skills from './pages/Skills'
-import Experience from './pages/Experience'
-import Projects from './pages/Projects'
-import ProjectDetail from './pages/ProjectDetail'
-import Contact from './pages/Contact'
+import { CursorGlow, Navbar, ScrollProgress } from "./components/Chrome";
+import Hero from "./components/Hero";
+import { About, Contact, Experience, Footer, Projects, Skills } from "./components/Sections";
 
-function App() {
+export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="skills" element={<Skills />} />
-        <Route path="experience" element={<Experience />} />
-        <Route path="projects" element={<Projects />} />
-        <Route path="projects/:slug" element={<ProjectDetail />} />
-        <Route path="contact" element={<Contact />} />
-      </Route>
-    </Routes>
-  )
+    <div className="grain relative min-h-screen overflow-x-hidden bg-ink">
+      <ScrollProgress />
+      <CursorGlow />
+      <Navbar />
+      <main className="relative z-10">
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
 }
-
-export default App
