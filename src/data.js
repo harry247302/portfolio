@@ -17,7 +17,7 @@ export const profile = {
     "API & Database Optimizer",
   ],
   summary:
-    "Full Stack Developer with 3 years of industry experience building web applications, CMS, CRM systems and business portals. I work end to end — from database schema and REST APIs to polished front-ends — and I've been integrating LLMs into real products.",
+    "Full Stack Developer with 3 years of industry experience building React.js web applications, CMS, CRM systems and business portals, with Python/Node.js backends. I work end to end — from database schema and REST APIs to polished front-ends — and I've built an LLM-powered admission chatbot using tool calling, embeddings and database-grounded responses. Improved API response times by 30% and website performance by 25%.",
 };
 
 export const stats = [
@@ -39,6 +39,7 @@ export const experience = [
       "Partner with UI/UX designers to ship user-friendly workflows.",
       "Integrate third-party APIs and services to extend the products.",
       "Lead team members — delegating tasks and coordinating delivery on time.",
+      "Designed and maintained backend services and RESTful APIs consumed by both web and mobile applications.",
     ],
   },
   {
@@ -52,6 +53,8 @@ export const experience = [
       "Designed database schemas, business logic and database operations.",
       "Gathered requirements directly with clients and delivered to their business needs.",
       "Worked with DevOps on servers, CI/CD and production deployments.",
+      "Designed database schemas and optimized queries, improving API response times by 30%.",
+      "Built responsive React/Next.js applications for better performance and user experience.",
     ],
   },
 ];
@@ -120,8 +123,8 @@ export const projects = [
     category: "AI & Backend",
     period: "05/2025 — 11/2025",
     blurb:
-      "LLM-powered chatbot (PERN stack) that uses tool calling to pull university, course, fee and eligibility data from the database, and recommends universities from a student's profile, location and budget — grounded in real data to cut hallucinations.",
-    tags: ["LLM", "Tool Calling", "RAG", "PostgreSQL", "PERN"],
+      "LLM-powered chatbot (PERN stack) that uses tool calling to pull university, course, fee and eligibility data from the database, and recommends universities from a student's profile, location and budget — grounded in real data to cut hallucinations. Backed by a Python FastAPI service handling LLM calls, tool calling and retrieval; embeddings of university, course and eligibility data live in a vector database and semantic search supplies context to the LLM. Keeps conversational context and collects student preferences across multi-turn chats. Deployed on AWS with Docker, Nginx and CI/CD (GitHub Actions).",
+    tags: ["LLM", "Tool Calling", "RAG", "PostgreSQL", "PERN", "FastAPI", "Python", "Vector DB", "Embeddings", "AWS", "Docker", "CI/CD"],
     accent: "from-iris/40 to-acid/10",
   },
   {
@@ -136,13 +139,13 @@ export const projects = [
 ];
 
 export const skillGroups = [
-  { title: "Frontend", items: ["React.js", "Next.js", "JavaScript", "Tailwind CSS"] },
-  { title: "Backend", items: ["Node.js", "Express.js", "Python", "RESTful APIs"] },
+  { title: "Frontend", items: ["React.js", "Next.js", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"] },
+  { title: "Backend", items: ["Node.js", "Express.js", "Python", "FastAPI", "RESTful APIs"] },
   { title: "Databases", items: ["MongoDB", "MySQL", "PostgreSQL"] },
-  { title: "AI & LLM", items: ["LLM APIs", "Tool Calling", "RAG", "Embeddings", "Prompt Engineering"] },
+  { title: "AI & LLM", items: ["LLM APIs", "Tool Calling", "RAG", "Embeddings", "Vector Databases", "Conversational AI", "Prompt Engineering"] },
   { title: "CMS & E-commerce", items: ["WordPress", "WP Customization", "E-commerce", "PHP"] },
-  { title: "DevOps", items: ["Docker", "Nginx", "PM2", "CI/CD", "VPS Management"] },
-  { title: "Tools", items: ["GitHub", "Cloudinary", "Payment Gateways", "Third-party APIs"] },
+  { title: "DevOps", items: ["Docker", "Nginx", "PM2", "CI/CD", "GitHub Actions", "AWS", "VPS Management"] },
+  { title: "Tools", items: ["GitHub", "Cloudinary", "Payment Gateways", "Third-party APIs", "Role-Based Access Control"] },
   { title: "AI-Assisted Dev", items: ["Claude", "ChatGPT", "GitHub Copilot", "Cursor"] },
 ];
 
